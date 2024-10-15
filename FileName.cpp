@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
 
-const int width = 100;
-const int heigth = 100;
+const int largeur = 100;
+const int hauteur = 100;
 const int iteration_max = 50;
 
+// calcul le nombre d'itération pour un point donné
 int mandelbrot(double reel, double imaginaire) {
 	double z_reel = 0;
 	double z_imaginaire = 0;
@@ -21,19 +22,22 @@ int mandelbrot(double reel, double imaginaire) {
 
 int main() {
 
-	std::vector <std::vector <int>> mandelbrotSet(heigth, std::vector <int>(width));
+	// stocker le nombre d'itération dans un tableau
+	std::vector <std::vector <int>> mandelbrotSet(hauteur, std::vector <int>(largeur));
 
-	for (int x = 0; x < width; x++) {
-		for (int y = 0; y < heigth; y++) {
-			double reel = (x - width / 2.0f) * 4.0f / width;
-			double imaginaire = (y - heigth / 2.0f) * 4.0f / heigth;
+	// suite de Mandelbrot
+	for (int x = 0; x < largeur; x++) {
+		for (int y = 0; y < hauteur; y++) {
+			double reel = (x - largeur / 2.0f) * 4.0f / largeur;
+			double imaginaire = (y - hauteur / 2.0f) * 4.0f / hauteur;
 
 			mandelbrotSet[x] [y] = mandelbrot(reel, imaginaire);
 		}
 	}
 
-	for (int y = 0; y < heigth; y++) {
-		for (int x = 0; x < width; x++) {
+	// affichenle résultat
+	for (int y = 0; y < hauteur; y++) {
+		for (int x = 0; x < largeur; x++) {
 			std::cout << mandelbrotSet[y][x] << "";
 		}
 
